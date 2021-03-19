@@ -7,8 +7,8 @@ public:
 	AoiTrigger(float x, float z, float speed, float range, AoiContext* context);
 	~AoiTrigger();
 	virtual void Enter();
-	virtual void Update(float interval);
 	virtual void Draw();
+	virtual void refresh();
 
 public:
 

@@ -45,3 +45,15 @@ void Aoi::DeRef(int aim) {
 	m_ref--;
 	keys.erase(aim);
 }
+
+void Aoi::setPos(float x, float z)
+{
+	m_pos.m_x = x;
+	m_pos.m_z = z;
+}
+
+void Aoi::refresh()
+{
+
+
+}

@@ -20,7 +20,8 @@ public:
 
 	virtual void Ref(int aim);
 	virtual void DeRef(int aim);
-
+	virtual void setPos(float x, float z);
+	virtual void refresh();
 public:
 	float m_radius;
 	float m_speed;

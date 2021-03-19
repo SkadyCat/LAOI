@@ -19,6 +19,8 @@ public:
 	virtual void Update(float interval);
 	virtual void Draw();
 
+	virtual void refresh();
+
 public:
 	
 	int id;

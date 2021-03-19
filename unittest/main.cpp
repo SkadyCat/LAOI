@@ -7,6 +7,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <iostream>
+
 using namespace std;
 
 AoiContext* g_context;
@@ -41,7 +42,9 @@ int main() {
 	while (true)
 	{
 
-		cout << "hello world" << endl;
+		
+
+		context->Update(1);
 		_sleep(100);
 
 	}

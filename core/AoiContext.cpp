@@ -109,7 +109,7 @@ void AoiContext::RefEntity(int uid,int aim) {
 	std::map<int, Aoi*>::iterator iter = m_entity_list.find(uid);
 	if (iter != m_entity_list.end()) {
 		Aoi* aoi = iter->second;
-		printf("links -> %d---%d\n", aoi->m_ref, aoi->keys.size());
+		//printf("links -> %d---%d\n", aoi->m_ref, aoi->keys.size());
 		aoi->Ref(aim);
 		
 	} else {
@@ -142,6 +142,7 @@ void AoiContext::Update(float interval) {
 	for (; iter != wm_list.end(); iter++) {
 		Aoi* aoi = iter->second;
 		aoi->Update(interval);
+		aoi->refresh();
 	}
 
 }

@@ -9,8 +9,8 @@ public:
 	~AoiEntity();
 
 	virtual void Enter();
-	virtual void Update(float interval);
 	virtual void Draw();
+	virtual void refresh();
 
 public:
 
