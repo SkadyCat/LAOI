@@ -2,12 +2,6 @@
 #include "Aoi.h"
 #include <stdlib.h>
 #include <math.h>
-#include "glut.h"
-
-
-const GLfloat R = 0.5f;
-const GLfloat pi = 3.1415926536f;
-
 Aoi::Aoi(float x, float z, float speed, AoiContext* context) :m_pos(x, z) {
 	m_context = context;
 	m_speed = speed;
@@ -40,17 +34,6 @@ void Aoi::Update(float interval) {
 }
 
 void Aoi::Draw() {
-	glBegin(GL_POLYGON);
-	if (m_ref > 0) {
-		glColor3f(0.0f, 0.5f, 1.0f);
-	} else {
-		glColor3f(0.5f, 1.0f, 1.0f);
-	}
-	int n = 10;
-	for (int i = 0; i < n; i++) {
-		glVertex2f(m_pos.m_x + m_radius*cos(2 * pi / n*i), m_pos.m_z + m_radius*sin(2 * pi / n*i));
-	}
-	glEnd();
 }
 
 void Aoi::Ref(int aim) {

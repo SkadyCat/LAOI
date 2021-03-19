@@ -1,0 +1,47 @@
+set(LAOI_LIBRARY "laoi")
+
+set(LAOI_HEADER_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/tower/hash.h
+	${CMAKE_CURRENT_SOURCE_DIR}/tower/hash_witness.h
+	${CMAKE_CURRENT_SOURCE_DIR}/tower/khash.h
+	${CMAKE_CURRENT_SOURCE_DIR}/tower/tower-aoi.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/aoi.h
+	${CMAKE_CURRENT_SOURCE_DIR}/AoiContext.h
+	${CMAKE_CURRENT_SOURCE_DIR}/AoiEntity.h
+	${CMAKE_CURRENT_SOURCE_DIR}/AoiTrigger.h
+	${CMAKE_CURRENT_SOURCE_DIR}/Vector2.h
+	${CMAKE_CURRENT_SOURCE_DIR}/TriggerMarker.h
+)
+
+set(LAOI_SOURCE_FILES
+
+	${CMAKE_CURRENT_SOURCE_DIR}/Aoi.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/AoiContext.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/AoiEntity.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/AoiTrigger.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/Vector2.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/TriggerMarker.cpp
+)
+set(LAOI_C_FILES
+	${CMAKE_CURRENT_SOURCE_DIR}/tower/hash.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/tower/hash_witness.c
+	${CMAKE_CURRENT_SOURCE_DIR}/tower/tower-aoi.c
+)
+
+include_directories( 
+	#${LUA_INCLUDE_DIR}
+	#${TW2CORE_INCLUDE_DIR}
+	${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/tower
+)
+
+add_library(${LAOI_LIBRARY} STATIC ${LAOI_HEADER_FILES} ${LAOI_SOURCE_FILES} ${LAOI_C_FILES})
+
+#add_executable (TowerTest main.cpp ${LAOI_LIBRARY})
+#set_target_properties(${LAOI_LIBRARY} PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(${LAOI_LIBRARY} PROPERTIES PREFIX "")
+set(LIBRARY_OUTPUT_PATH ../Share)
+target_link_libraries(${LAOI_LIBRARY} PRIVATE ${LUA_LIBRARY} ${TW2CORE_LIBRARY})
+
+#install(TARGETS ${LAOI_LIBRARY} DESTINATION "${MODULE_INSTALL_PATH}")

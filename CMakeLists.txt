@@ -1,44 +1,17 @@
-set(LAOI_LIBRARY "laoi")
+# 最低版本要求
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
 
-set(LAOI_HEADER_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/tower/hash.h
-	${CMAKE_CURRENT_SOURCE_DIR}/tower/hash_witness.h
-	${CMAKE_CURRENT_SOURCE_DIR}/tower/khash.h
-	${CMAKE_CURRENT_SOURCE_DIR}/tower/tower-aoi.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/aoi.h
-	${CMAKE_CURRENT_SOURCE_DIR}/AoiContext.h
-	${CMAKE_CURRENT_SOURCE_DIR}/AoiEntity.h
-	${CMAKE_CURRENT_SOURCE_DIR}/AoiTrigger.h
-	${CMAKE_CURRENT_SOURCE_DIR}/Vector2.h
-	${CMAKE_CURRENT_SOURCE_DIR}/TriggerMarker.h
-)
+# 项目名称
+PROJECT(AoiShare)
 
-set(LAOI_SOURCE_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/tower/hash.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/tower/hash_witness.c
-	${CMAKE_CURRENT_SOURCE_DIR}/tower/tower-aoi.c
-	${CMAKE_CURRENT_SOURCE_DIR}/Aoi.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/AoiContext.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/AoiEntity.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/AoiTrigger.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/Vector2.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/TriggerMarker.cpp
-)
+# 配置vsocdedebug
+add_definitions(-std=c++11)
 
-include_directories( 
-	#${LUA_INCLUDE_DIR}
-	#${TW2CORE_INCLUDE_DIR}
-	${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/tower
-)
+set(cmake_build_type "Debug")
+set(cmake_cxx_flage_debug "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+set(cmake_cxx_flags_release "$ENV{CXXFLAGS} -03 -Wall")
 
-add_library(${LAOI_LIBRARY} SHARED ${LAOI_HEADER_FILES} ${LAOI_SOURCE_FILES})
+# 添加两个子目录
 
-#add_executable (TowerTest main.cpp ${LAOI_LIBRARY})
-#set_target_properties(${LAOI_LIBRARY} PROPERTIES LINKER_LANGUAGE C)
-set_target_properties(${LAOI_LIBRARY} PROPERTIES PREFIX "")
-set(LIBRARY_OUTPUT_PATH ../Share)
-target_link_libraries(${LAOI_LIBRARY} PRIVATE ${LUA_LIBRARY} ${TW2CORE_LIBRARY})
-
-#install(TARGETS ${LAOI_LIBRARY} DESTINATION "${MODULE_INSTALL_PATH}")
+ADD_SUBDIRECTORY(./unittest)
+ADD_SUBDIRECTORY(./core)

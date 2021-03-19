@@ -1,0 +1,19 @@
+set(UNITTESTEXE "unitest")
+SET(EXECUTABLE_OUTPUT_PATH ../Share)
+
+set(UNITTESTEXE_HEADER_FILES
+	${CMAKE_CURRENT_SOURCE_DIR}/unittest.h
+)
+
+set(UNITTESTEXE_SOURCE_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+)
+
+include_directories( 
+	${CMAKE_CURRENT_SOURCE_DIR}
+	
+)
+add_executable(${UNITTESTEXE} ${UNITTESTEXE_HEADER_FILES} ${UNITTESTEXE_SOURCE_FILES})
+
+target_link_libraries(${UNITTESTEXE} PRIVATE laoi)
+

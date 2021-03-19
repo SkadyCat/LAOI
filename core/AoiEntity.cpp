@@ -1,8 +1,5 @@
 
 #include "AoiEntity.h"
-#include "glut.h"
-
-
 AoiEntity::AoiEntity(float x, float z, float speed, AoiContext* context) :Aoi(x, z, speed, context) {
 
 }

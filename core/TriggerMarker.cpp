@@ -1,6 +1,5 @@
 #include "TriggerMarker.h"
 #include <math.h>
-#include "glut.h"
 TriggerMarker::TriggerMarker(int id,float x, float z, float speed,float range, AoiContext* context)
 	:Aoi(x,z,speed,context)
 {
@@ -62,19 +61,14 @@ void TriggerMarker::Draw()
 	printf("status : %d", keys.size());
 	trigger->Draw();
 	entity->Draw();
-	glColor3f(0.0f, 1.0f, 0.0f);
-	glLineStipple(2, 0x5555);
-	glEnable(GL_LINE_STIPPLE);
-	glBegin(GL_LINES);
-
 	map<int, int>::iterator it = entity->keys.begin();
 
 	while (it!= entity->keys.end())
 	{
 		
-		glVertex3f(m_pos.m_x, m_pos.m_z, 0);
+		
 		Aoi* tt = context->wm_list[context->idMaps[it->first]];
-		glVertex3f(tt->m_pos.m_x, tt->m_pos.m_z, 0);
+		keys[it->first] = 2;
 		it++;
 	}
 
@@ -82,23 +76,9 @@ void TriggerMarker::Draw()
 
 	while (it != trigger->keys.end())
 	{
-
-		glVertex3f(m_pos.m_x, m_pos.m_z, 0);
 		Aoi* tt = context->wm_list[context->idMaps[it->first]];
-		glVertex3f(tt->m_pos.m_x, tt->m_pos.m_z, 0);
+		keys[it->first] = 2;
 		it++;
 	}
-
-	//glVertex3f(m_pos.m_x - range, m_pos.m_z - range, 0);
-	//glVertex3f(m_pos.m_x + range, m_pos.m_z - range, 0);
-	//
-	//glVertex3f(m_pos.m_x - range, m_pos.m_z + range, 0);
-	//glVertex3f(m_pos.m_x + range, m_pos.m_z + range, 0);
-	//
-	//glVertex3f(m_pos.m_x + range, m_pos.m_z - range, 0);
-	//glVertex3f(m_pos.m_x + range, m_pos.m_z + range, 0);
-
-	glEnd();
-	glDisable(GL_LINE_STIPPLE);
 	
 }

@@ -4,6 +4,10 @@
 #include "AoiTrigger.h"
 #include "AoiContext.h"
 #include <vector>
+#include<stdio.h>
+#include<stdlib.h>
+#include <iostream>
+using namespace std;
 
 AoiContext* g_context;
 
@@ -31,6 +35,15 @@ int main() {
 
 	for (int i = 0; i < 20; i++) {
 		context->CreateTriggerMarker(i);;
+	}
+
+
+	while (true)
+	{
+
+		cout << "hello world" << endl;
+		_sleep(100);
+		
 	}
 	return 0;
 }
