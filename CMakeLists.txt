@@ -14,4 +14,4 @@ set(cmake_cxx_flags_release "$ENV{CXXFLAGS} -03 -Wall")
 # 添加两个子目录
 
 ADD_SUBDIRECTORY(./unittest)
-ADD_SUBDIRECTORY(./core)
+ADD_SUBDIRECTORY(./aoi)
